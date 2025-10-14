@@ -14,6 +14,12 @@ jobs:
       packages: write
 
     steps:
+        # Step to set the lowercase environment variables
+      - name: Set lowercase repo variables
+        run: |
+          echo "REPO_LOWER=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
+          echo "OWNER_LOWER=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -29,4 +35,4 @@ jobs:
         with:
           context: ./ambient2influx/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository }}:latest
+          tags: ghcr.io/${{ env.OWNER_LOWER }}:latest
