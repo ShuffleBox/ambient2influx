@@ -22,8 +22,8 @@ def ambient2influx():
                                 os.getenv('INFLUX_DATABASE'))
 
     payload = {}
-    payload['measurement'] = 'Ambient Weather Station Readings'
     payload['fields'] = payload_dict
+    payload['measurement'] = 'AMBWeather_' + str(payload['fields']['PASSKEY']) 
     commit = []
     commit.append(payload)
     influx_client.write_points(commit)
