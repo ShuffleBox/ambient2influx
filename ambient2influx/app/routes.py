@@ -26,7 +26,7 @@ def ambient2influx():
     payload['fields'] = payload_dict
     commit = []
     commit.append(payload)
-    #influx_client.write_points(commit)
+    influx_client.write_points(commit)
     pprint(commit)
     return "Hello, ambient"
 
