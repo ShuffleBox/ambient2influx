@@ -7,16 +7,13 @@ from influxdb import InfluxDBClient
 from app import app
 from flask import request
 
-
-#import ipdb
 from pprint import pprint
 
 @app.route('/ambient2influx/')
 def ambient2influx():
     #convert args to python dictionary
     payload_dict = request.args.to_dict()
-    #ipdb.set_trace()
-
+    
     #make influxDB client
     influx_client = InfluxDBClient(os.getenv('INFLUX_SERVER'),
                                 os.getenv('INFLUX_PORT'),
