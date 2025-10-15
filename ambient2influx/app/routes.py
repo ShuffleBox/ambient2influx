@@ -17,9 +17,7 @@ def ambient2influx():
     #need to modify the payload to properly type the contents
     payload_dict = {}
     for key, value in raw_dict.items():
-        if key == "PASSKEY":
-            continue
-        elif key == "dateutc":
+        if key == "dateutc":
             try:
                 # Parse device-provided time (example: 2025-10-15 17:09:32)
                 timestamp = datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
